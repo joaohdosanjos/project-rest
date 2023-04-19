@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Adicionar Novo Aluno</title>
+</head>
+<body>
+<div align="center">
+  <h1>Adicionar Aluno</h1>
+  <br />
+  <p> <a th:href="@{'/homepage/'}">Voltar</a> </p>
+  <br />
+
+  <p>ALUNO INVÁLIDO </p>
+  <form action="#" th:action="@{/saveAluno}" th:object="${aluno}"
+        method="post">
+
+    <table border="0" cellpadding="10">
+      <tr>
+        <td>Matricula:</td>
+        <td><input type="text" maxlength="9" th:field="*{matricula}" /></td>
+      </tr>
+      <tr>
+        <td>Nome:</td>
+        <td><input type="text" th:field="*{nome}" /></td>
+      </tr>
+      <tr>
+        <td>Cpf:</td>
+        <td><input type="text" maxlength="9" th:field="*{cpf}" /></td>
+      </tr>
+      <tr>
+        <td>Idade:</td>
+        <td><input type="text" th:field="*{idade}" /></td>
+      </tr>
+      <tr>
+        <td>Sexo :</td>
+        <td>
+          <select id="dropDownSexList" th:field="*{sexo}" >
+            <option value="">Escolha um Sexo</option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+          </select>
+        </td>
+      </tr>
+        <td>Pne:</td>
+        <td>
+          <select id="dropDownPneList" th:field="*{pne}" >
+            <option value="S">S</option>
+            <option value="N">N</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Escolaridade:</td>
+        <td><input type="text" th:field="*{escolaridade}" /></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="submit">Save</button> </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

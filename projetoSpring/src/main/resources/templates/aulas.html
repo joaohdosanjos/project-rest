@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"><head>
+  <meta charset="UTF-8">
+  <title>Listagem de Aulas</title>
+</head>
+<body>
+<div align="center">
+  <h1>Lista de Aulas </h1>
+  <a href="/criarAula">Criar Aulas</a>
+  <br/><br/>
+
+  <div align="center">
+    <table border="1" cellpadding="10">
+      <thead>
+      <tr>
+        <th> <a th:href="@{'/alunos/'}">Alunos</a> </th>
+
+        <th> <a th:href="@{'/professores/'}">Professores</a> </th>
+
+        <th> <a th:href="@{'/aulas/'}">Aulas</a> </th>
+
+        <th> <a th:href="@{'/disciplinas/'}">Disciplinas</a> </th>
+
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <table border="1" cellpadding="10">
+      <thead>
+      <tr>
+        <th>Aula ID</th>
+        <th>Professor</th>
+        <th>Aluno</th>
+        <th>Data</th>
+        <th>Média</th>
+        <th>Duração</th>
+        <th>Valor</th>
+        <th>Resultado</th>
+        <th>Ações</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="aula : ${aulasList}">
+        <td th:text="${aula.id}">Aula ID</td>
+        <td th:text="${aula.professor.nome}">Professor</td>
+        <td th:text="${aula.aluno.nome}">Aluno</td>
+        <td th:text="${aula.data}">Data</td>
+        <td th:text="${aula.media}">Média</td>
+        <td th:text="${aula.duracao}">Duração</td>
+        <td th:text="${aula.valor}">Valor</td>
+        <td th:text="${aula.resultado}">Resultado</td>
+
+        <td>
+          <a th:href="@{'/editAula/' + ${aula.id}}">Editar</a>
+          &nbsp;&nbsp;&nbsp;
+          <a th:href="@{'/deleteAula/' + ${aula.id}}">Remover</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

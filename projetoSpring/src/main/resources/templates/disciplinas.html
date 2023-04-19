@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"><head>
+  <meta charset="UTF-8">
+  <title>Listagem de Disciplinas</title>
+</head>
+<body>
+<div align="center">
+  <h1>Lista de Disciplinas </h1>
+  <a href="/criarDisciplina">Criar Disciplinas</a>
+  <br/><br/>
+
+  <div align="center">
+    <table border="1" cellpadding="10">
+      <thead>
+      <tr>
+        <th> <a th:href="@{'/alunos/'}">Alunos</a> </th>
+
+        <th> <a th:href="@{'/professores/'}">Professores</a> </th>
+
+        <th> <a th:href="@{'/aulas/'}">Aulas</a> </th>
+
+        <th> <a th:href="@{'/disciplinas/'}">Disciplinas</a> </th>
+
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <table border="1" cellpadding="10">
+      <thead>
+      <tr>
+        <th>Disciplina ID</th>
+        <th>Título</th>
+        <th>Area</th>
+        <th>Ações</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="disciplina : ${disciplinasList}">
+        <td th:text="${disciplina.id}">Disciplina ID</td>
+        <td th:text="${disciplina.titulo}">Título</td>
+        <td th:text="${disciplina.area}">Aluno</td>
+        <td>
+          <a th:href="@{'/editDisciplina/' + ${disciplina.id}}">Editar</a>
+          &nbsp;&nbsp;&nbsp;
+          <a th:href="@{'/deleteDisciplina/' + ${disciplina.id}}">Remover</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

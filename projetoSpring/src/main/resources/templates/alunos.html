@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="UTF-8">
+    <title>Listagem de Alunos</title>
+</head>
+<body>
+<div align="center">
+  <h1>Lista de Alunos </h1>
+  <a href="/criarAlunos">Criar um Aluno</a>
+  <br/><br/>
+
+  <div align="center">
+    <table border="1" cellpadding="10">
+      <thead>
+      <tr>
+        <th> <a th:href="@{'/alunos/'}">Alunos</a> </th>
+
+        <th> <a th:href="@{'/professores/'}">Professores</a> </th>
+
+        <th> <a th:href="@{'/aulas/'}">Aulas</a> </th>
+
+        <th> <a th:href="@{'/disciplinas/'}">Disciplinas</a> </th>
+
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+  <table border="1" cellpadding="10">
+    <thead>
+    <tr>
+      <th>Nr de Matricula</th>
+      <th>Cpf</th>
+      <th>Nome</th>
+      <th>Sexo</th>
+      <th>Idade</th>
+      <th>Pne</th>
+      <th>Escolaridade</th>
+      <th>Ações</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="aluno : ${alunosList}">
+      <td th:text="${aluno.matricula}">Cpf</td>
+      <td th:text="${aluno.cpf}">Cpf</td>
+      <td th:text="${aluno.nome}">Nome</td>
+      <td th:text="${aluno.sexo}">Cpf</td>
+      <td th:text="${aluno.idade}">Cpf</td>
+      <td th:text="${aluno.pne}">Pne</td>
+      <td th:text="${aluno.escolaridade}">Escolaridade</td>
+
+      <td>
+        <a th:href="@{'/editAluno/' + ${aluno.matricula}}">Editar</a>
+        &nbsp;&nbsp;&nbsp;
+        <a th:href="@{'/deleteAluno/' + ${aluno.matricula}}">Remover</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

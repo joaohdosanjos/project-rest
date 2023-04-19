@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Adicionar Novo Professor</title>
+</head>
+<body>
+<div align="center">
+  <h1>Adicionar Professor</h1>
+  <br />
+  <p> <a th:href="@{'/homepage/'}">Voltar</a> </p>
+
+  <form action="#" th:action="@{/saveProfessor}" th:object="${professor}"
+        method="post">
+
+    <table border="0" cellpadding="10">
+      <tr>
+        <td>Cpf:</td>
+        <td><input type="text" maxlength="9" th:field="*{cpf}" /></td>
+      </tr>
+      <tr>
+        <td>Nome:</td>
+        <td><input type="text" th:field="*{nome}" /></td>
+      </tr>
+      <tr>
+        <td>Idade:</td>
+        <td><input type="text" th:field="*{idade}" /></td>
+      </tr>
+      <tr>
+        <td>Sexo :</td>
+        <td>
+          <select id="dropDownSexList" th:field="*{sexo}" >
+            <option value="">Escolha um Sexo</option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Tempo de Ensino :</td>
+        <td><input type="text" th:field="*{tempoEnsino}" /></td>
+      </tr>
+      <tr>
+        <td>Salário:</td>
+        <td><input type="text" th:field="*{salario}" /></td>
+      </tr>
+      <tr>
+        <td>Disciplina:</td>
+        <td>
+          <select class="form-control" id="dropDownList" th:field="*{disciplina.id}" >
+            <option value="0">Escolha uma disciplina</option>
+            <option th:each="disciplina : ${disciplinaList}" th:value="${disciplina.id}" th:text="${disciplina.titulo}"></option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="submit">Save</button> </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

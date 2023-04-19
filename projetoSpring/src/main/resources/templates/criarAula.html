@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Novo Aluno</title>
+</head>
+<body>
+<div align="center">
+  <h1>Adicionar Aula</h1>
+  <br/>
+  <p> <a th:href="@{'/homepage/'}">Voltar</a> </p>
+
+  <form action="#" th:action="@{/saveAula}" th:object="${aula}"
+        method="post">
+
+    <table border="0" cellpadding="10">
+      <tr>
+        <td><input type="hidden" th:field="*{id}" /></td>
+      </tr>
+      <tr>
+        <td>Aluno:</td>
+      <td>
+        <select class="form-control" id="dropDownAlunoList" th:field="*{aluno.matricula}" >
+          <option value="0">Escolha um aluno</option>
+          <option th:each="aluno : ${alunoList}" th:value="${aluno.matricula}" th:text="${aluno.nome}"></option>
+        </select>
+      </td>
+      </tr>
+      <tr>
+        <td>Professor:</td>
+        <td>
+          <select class="form-control" id="dropDownProfessorList" th:field="*{professor.cpf}" >
+            <option value="0">Escolha uma Professor</option>
+            <option th:each="professor : ${professorList}" th:value="${professor.cpf}" th:text="${professor.nome}"></option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Data:</td>
+        <td><input type="date" placeholder="dd/mm/yyyy" th:field="*{data}" /></td>
+      </tr>
+      <tr>
+        <td>Média:</td>
+        <td><input type="text" th:field="*{media}" /></td>
+      </tr>
+      <tr>
+        <td>Duração:</td>
+        <td><input type="text" th:field="*{duracao}" /></td>
+      </tr>
+      <tr>
+        <td>Valor:</td>
+        <td><input type="text" th:field="*{valor}" /></td>
+      </tr>
+      <tr>
+        <td>Resultado:</td>
+        <td><input type="text" th:field="*{resultado}" /></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="submit">Save</button> </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="UTF-8">
+    <title>Listagem de Professores</title>
+</head>
+<body>
+<div align="center">
+  <h1>Lista de Professores </h1>
+  <a href="/criarProfessores">Criar um Professor</a>
+  <br/><br/>
+
+  <div align="center">
+    <table border="1" cellpadding="10">
+      <thead>
+      <tr>
+        <th> <a th:href="@{'/alunos/'}">Alunos</a> </th>
+
+        <th> <a th:href="@{'/professores/'}">Professores</a> </th>
+
+        <th> <a th:href="@{'/aulas/'}">Aulas</a> </th>
+
+        <th> <a th:href="@{'/disciplinas/'}">Disciplinas</a> </th>
+
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+  <table border="1" cellpadding="10">
+    <thead>
+    <tr>
+      <th>Cpf</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Sexo</th>
+      <th>Tempo Ensino</th>
+      <th>Salário</th>
+      <th>Disciplina</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="professor : ${professoresList}">
+      <td th:text="${professor.cpf}">Cpf</td>
+      <td th:text="${professor.nome}">Nome</td>
+      <td th:text="${professor.idade}">Idade</td>
+      <td th:text="${professor.sexo}">Sexo</td>
+      <td th:text="${professor.tempoEnsino}">Tempo de Ensino</td>
+      <td th:text="${professor.salario}">Salário</td>
+      <td th:text="${professor.disciplina != null ? professor.disciplina.titulo : '' }">Disciplina</td>
+
+      <td>
+        <a th:href="@{'/editProfessores/' + ${professor.cpf}}">Editar</a>
+        &nbsp;&nbsp;&nbsp;
+        <a th:href="@{'/deleteProfessores/' + ${professor.cpf}}">Remover</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</body>
+</html>
